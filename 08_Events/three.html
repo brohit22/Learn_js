@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>events2</title>
+    <style>
+      body {
+        text-align: center;
+        justify-items: center;
+      }
+
+      h2 {
+        font-size: 5vw;
+      }
+
+      button {
+        margin: 5px;
+        padding: 5px;
+        width: 7rem;
+        font-size: 2vw;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Chai aur Code</h2>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+  </body>
+  <script>
+    const sayDate = function (str) {
+      console.log(str, Date.now());
+    };
+
+    let intervalId; // Variable to store the interval ID
+
+    const start = document
+      .querySelector('#start')
+      .addEventListener('click', function () {
+        intervalId = setInterval(sayDate, 1000, 'hi');
+      });
+
+    document.querySelector('#stop').addEventListener('click', function () {
+      clearInterval(intervalId);
+    });
+  </script>
+</html>
