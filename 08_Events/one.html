@@ -4,9 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Events</title>
+    <style>
+      #cursor {
+        background-color: orange;
+        width: 20px;
+        height: 20px;
+        mix-blend-mode: difference;
+        border-radius: 20%;
+        position: absolute;
+        transition: all linear 0.1s;
+      }
+    </style>
   </head>
   <body style="background-color: #414141; color: aliceblue">
-    <h2>Amazing image</h2>
+    <div id="main"><div id="cursor"></div></div>
+
+    <h2 style="font-size: 9vw">Amazing image</h2>
     <div>
       <ul id="images">
         <li>
@@ -72,42 +85,54 @@
     // altkey, ctrlkey, shiftkey, keyCode
 
     /*
-    document.getElementById('images').addEventListener(
-      'click',
-      function (e) {
-        console.log(`Clicked on images in ul`);
-      },
-      false
-    );
+     document.getElementById('images').addEventListener(
+       'click',
+       function (e) {
+         console.log(`Clicked on images in ul`);
+       },
+       false
+     );
 
-    document.getElementById('owl').addEventListener('click', function (e) {
-      // alert('Clicked On Owl');
-      // console.log(e);
-      e.stopPropagation(); // TO STOP EVENT BUBBLING
-      console.log(`Clicked On Owl`);
-    });
+     document.getElementById('owl').addEventListener('click', function (e) {
+       // alert('Clicked On Owl');
+       // console.log(e);
+       e.stopPropagation(); // TO STOP EVENT BUBBLING
+       console.log(`Clicked On Owl`);
+     });
 
-    // Event Propogartion
-    // Bubbling  - First excute innner event then outer. using default false value.
-    // Capturing - Executaion done from outer to inner . using true
+     // Event Propogartion
+     // Bubbling  - First excute innner event then outer. using default false value.
+     // Capturing - Executaion done from outer to inner . using true
 
-    document.getElementById('google').addEventListener('click', function (e) {
-      console.log('Google clicked ');
-      e.preventDefault(); // to prevent default bheaviour of html
-      e.stopPropagation();
-    });
-    */
+     document.getElementById('google').addEventListener('click', function (e) {
+       console.log('Google clicked ');
+       e.preventDefault(); // to prevent default bheaviour of html
+       e.stopPropagation();
+     });
+     */
 
-    document.querySelector('#images').addEventListener('click', function (e) {
-      console.log(e.target.tagName);
-      if (e.target.tagName === 'IMG') {
-        console.log(e.target.id);
-        let removeIt = e.target.parentNode;
-        removeIt.remove(); // To remove elements from webpage
-      }
-    });
+    /* Remove element */
+
+    // document.querySelector('#images').addEventListener('click', function (e) {
+    //   console.log(e.target.tagName);
+    //   if (e.target.tagName === 'IMG') {
+    //     console.log(e.target.id);
+    //     let removeIt = e.target.parentNode;
+    //     removeIt.remove(); // To remove elements from webpage
+    //   }
+    // });
 
     // Also use this
     //removeIt.parentNode.removeChild(removeIt)
+
+    /* Mouse event */
+
+    const main = document.querySelector('#main');
+    const cursor = document.querySelector('#cursor');
+
+    main.addEventListener('mousemove', function (dets) {
+      cursor.style.left = dets.x + 'px';
+      cursor.style.top = dets.y + 'px';
+    });
   </script>
 </html>
