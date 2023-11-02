@@ -58,9 +58,9 @@
 
       if (xhr.readyState === 4) {
         // console.log(this.responseText);
-        const data = JSON.parse(this.responseText);
+        const data = JSON.parse(this.responseText); // To convert data into json format
         console.log(typeof data);
-        console.log(data.location);
+        console.log(data.location); // Accessing  the api data
       }
     };
     xhr.send();
