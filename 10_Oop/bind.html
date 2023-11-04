@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React and Bind</title>
+  </head>
+  <body>
+    <button>👍Clicked</button>
+  </body>
+
+  <script>
+    class React {
+      constructor() {
+        this.libaray = 'React';
+        this.server = 'https://localhost:3000';
+
+        //requirement
+        document
+          .querySelector('button')
+          .addEventListener('click', this.handleClick.bind(this));
+      }
+
+      handleClick() {
+        console.log('button clicked');
+        console.log(this.server);
+      }
+    }
+
+    const app = new React();
+  </script>
+</html>
+
+<!-- "this.handleClick.bind(this)"   
+
+  1st  this - give refernce to method in class , but 
+  after that we don't get other value refernce and also to not create new refernce
+
+  So , using bind method we join all other refernce of variable and methods.
+-->
