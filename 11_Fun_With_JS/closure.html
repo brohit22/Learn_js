@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Closure | Lexcial scope</title>
+  </head>
+  <body style="background-color: #313131">
+    <h1 style="color: #fff">Closure | Lexcial Scope</h1>
+    <button id="orange">Orange</button>
+    <button id="green">Green</button>
+  </body>
+
+  <script>
+    // function init() {
+    //   var name = 'Mozilla';
+    //   function displayName() {
+    //     console.log(name);
+    //   }
+    //   displayName();
+    // }
+    // init();
+
+    // function outer() {
+    //   let username = 'tony';
+    //   // console.log(secret);
+    //   function inner() {
+    //     let secret = 'xyz';
+    //     console.log(`inner => ${username}`);
+    //   }
+
+    //   function innerTwo() {
+    //     console.log(`innerTwo => ${username}`);
+    //     console.log(secret);
+    //   }
+    //   inner();
+    // }
+    // outer();
+    // console.log(`outer => ${username}`);
+
+    // Closure
+
+    function makeFunc() {
+      const name = 'Mozilla';
+      function displayName() {
+        console.log(name);
+      }
+      return displayName;
+    }
+
+    const myFunc = makeFunc();
+    myFunc();
+  </script>
+
+  <script>
+    /*
+
+    //  Not good use for very long data or code
+
+      document.getElementById('orange').onclick = function () {
+        document.body.style.backgroundColor = `Orange`;
+      };
+      document.getElementById('green').onclick = function () {
+        document.body.style.backgroundColor = `green`;
+      };
+      */
+
+    // ❌ wRONG APPRAOCH {Exteuedd or display only last color and cannot change }
+    // function clickHandler(color) {
+    //   document.body.style.backgroundColor = `${color}`;
+    // }
+
+    // document.getElementById('orange').onclick = clickHandler('orange');
+    // document.getElementById('orange').onclick = clickHandler('green');
+
+    // ✔ Right APPRAOCH Using closure and lexical scope
+
+    function clickHandler(color) {
+      // document.body.style.backgroundColor = `${color}`;
+      return function () {
+        document.body.style.backgroundColor = `${color}`;
+      };
+    }
+
+    document.getElementById('orange').onclick = clickHandler('orange');
+    document.getElementById('green').onclick = clickHandler('green');
+
+    // What happend here ?
+    // because of outer fucntion excuted ('clickhandler()') the scope is ended now , but becasue of lexcial scoping and return function we can acess inner function also.
+  </script>
+</html>
